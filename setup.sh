@@ -50,23 +50,25 @@ mkdir -p test
 mkdir -p deployments
 
 # Create .env file if it doesn't exist
-if [ ! -f ".env" ]; then
-    echo "🔐 Creating .env file..."
+if [ ! -f .env ]; then
+    echo "Creating .env file..."
     cat > .env << EOL
 # Network RPC URLs
 MAINNET_RPC_URL=https://eth-mainnet.g.alchemy.com/v2/YOUR_KEY
 SEPOLIA_RPC_URL=https://eth-sepolia.g.alchemy.com/v2/YOUR_KEY
+HOLESKY_RPC_URL=https://holesky.infura.io/v3/YOUR_KEY
 
 # Private key for deployment (DO NOT COMMIT!)
-PRIVATE_KEY= 
+PRIVATE_KEY=your_private_key_here
 
 # Etherscan API key for contract verification
-ETHERSCAN_API_KEY=your_etherscan_api_key
+ETHERSCAN_API_KEY=your_etherscan_api_key_here
 
-# Gas reporter settings
+# Optional: For gas reporting
 REPORT_GAS=true
-COINMARKETCAP_API_KEY=your_coinmarketcap_api_key
+COINMARKETCAP_API_KEY=your_coinmarketcap_api_key_here
 EOL
+
     echo "⚠️  Please update .env with your actual keys!"
 fi
 
@@ -87,7 +89,7 @@ echo "✅ Setup complete!"
 echo ""
 echo "Next steps:"
 echo "1. Update .env with your private key and RPC URLs"
-echo "2. Get testnet ETH from https://sepoliafaucet.com"
-echo "3. Deploy with: npx hardhat run scripts/deploy.js --network sepolia"
+echo "2. Run tests: npx hardhat test"
+echo "3. Deploy to testnet: npx hardhat run scripts/deploy.js --network holesky"
 echo ""
-echo "�� Happy building!" 
+echo " Happy building!" 

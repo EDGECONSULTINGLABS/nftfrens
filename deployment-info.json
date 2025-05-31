@@ -1,0 +1,12 @@
+{
+  "network": "holesky",
+  "deployer": "0xAF27212D46E437bCAE242F82c0767397E524AcCE",
+  "timestamp": "2025-05-30T16:06:20.465Z",
+  "contracts": {
+    "shareToken": "0xb311dE79BD5EE0a297fBE9a30F0a74f82f81aF7b",
+    "timelock": "0x28f11a3ee35Cf6cbD60F003A5940d500dCEFd3c3",
+    "governance": "0x5d426be14c04Cd067651D7727122604Df13d12a4",
+    "factory": "0xa8fCDe078B7708ac22c162B833cCCDcDdEaf8046",
+    "vault": "0xd0A3B9ecB1727Ae553A981d504dc78543fAB2182"
+  }
+}

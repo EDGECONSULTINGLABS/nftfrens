@@ -24,9 +24,19 @@ module.exports = {
       url: "http://127.0.0.1:8545"
     },
     holesky: {
-      url: "https://rpc.ankr.com/eth_holesky/981ceadb2360eae96d0fb28ce6a58da051cdcaa4d46290aaf547ddcefc3d33aa",
+      url: process.env.HOLESKY_RPC_URL,
       accounts: process.env.PRIVATE_KEY ? [process.env.PRIVATE_KEY] : [],
-      chainId: 17000
+      chainId: 17000,
+      verify: {
+        etherscan: {
+          apiKey: process.env.ETHERSCAN_API_KEY
+        }
+      }
+    },
+    sepolia: {
+      url: process.env.SEPOLIA_RPC_URL,
+      accounts: process.env.PRIVATE_KEY ? [process.env.PRIVATE_KEY] : [],
+      chainId: 11155111
     }
   },
   gasReporter: {

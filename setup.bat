@@ -50,23 +50,24 @@ if not exist test mkdir test
 if not exist deployments mkdir deployments
 
 REM Create .env file if it doesn't exist
+echo Creating .env file...
+
 if not exist .env (
-    echo 🔐 Creating .env file...
-    (
-        echo # Network RPC URLs
-        echo MAINNET_RPC_URL=https://eth-mainnet.g.alchemy.com/v2/YOUR_KEY
-        echo SEPOLIA_RPC_URL=https://eth-sepolia.g.alchemy.com/v2/YOUR_KEY
-        echo.
-        echo # Private key for deployment (DO NOT COMMIT!^)
-        echo PRIVATE_KEY=your_private_key_here
-        echo.
-        echo # Etherscan API key for contract verification
-        echo ETHERSCAN_API_KEY=your_etherscan_api_key
-        echo.
-        echo # Gas reporter settings
-        echo REPORT_GAS=true
-        echo COINMARKETCAP_API_KEY=your_coinmarketcap_api_key
-    ) > .env
+    echo # Network RPC URLs > .env
+    echo MAINNET_RPC_URL=https://eth-mainnet.g.alchemy.com/v2/YOUR_KEY >> .env
+    echo SEPOLIA_RPC_URL=https://eth-sepolia.g.alchemy.com/v2/YOUR_KEY >> .env
+    echo HOLESKY_RPC_URL=https://holesky.infura.io/v3/YOUR_KEY >> .env
+    echo. >> .env
+    echo # Private key for deployment (DO NOT COMMIT!) >> .env
+    echo PRIVATE_KEY=your_private_key_here >> .env
+    echo. >> .env
+    echo # Etherscan API key for contract verification >> .env
+    echo ETHERSCAN_API_KEY=your_etherscan_api_key_here >> .env
+    echo. >> .env
+    echo # Optional: For gas reporting >> .env
+    echo REPORT_GAS=true >> .env
+    echo COINMARKETCAP_API_KEY=your_coinmarketcap_api_key_here >> .env
+
     echo ⚠️  Please update .env with your actual keys!
 )
 
@@ -87,7 +88,7 @@ echo ✅ Setup complete!
 echo.
 echo Next steps:
 echo 1. Update .env with your private key and RPC URLs
-echo 2. Get testnet ETH from https://sepoliafaucet.com
-echo 3. Deploy with: npx hardhat run scripts/deploy.js --network sepolia
+echo 2. Run tests: npx hardhat test
+echo 3. Deploy to testnet: npx hardhat run scripts/deploy.js --network holesky
 echo.
 echo 🎉 Happy building! 

@@ -186,7 +186,7 @@ describe("Social NFT Vault", function () {
       await mockNFT.mint(vault.target, tokenId);
       
       // Approve marketplace to transfer NFT
-      await mockNFT.connect(vault.runner).setApprovalForAll(mockMarketplace.target, true);
+      await mockNFT.connect(owner).setApprovalForAll(mockMarketplace.target, true);
       
       // Sell NFT - encode correct function selector
       const iface = new ethers.Interface([

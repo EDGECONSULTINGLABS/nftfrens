@@ -1,141 +1,49 @@
-# Social NFT Vault Protocol
+# NFT Funding Pool
 
-A decentralized protocol enabling groups to collectively fund, purchase, and manage NFTs through secure, modular smart contracts.
+A decentralized platform for NFT fractionalization and funding.
 
-## Overview
+## Features
 
-The Social NFT Vault Protocol allows users to pool their resources to acquire and manage NFTs as a group. Each vault is an independent instance managing one pool of funds and NFTs, with its own governance and share token.
+- NFT fractionalization
+- Governance system
+- Automated funding pools
+- Secure vault management
 
-## Key Features
+## Setup
 
-- **Collective Ownership**: Pool funds with others to purchase high-value NFTs
-- **Flexible Governance**: On-chain and off-chain voting options
-- **Multi-Marketplace Support**: Buy NFTs from various marketplaces and aggregators
-- **Plugin System**: Extend vault functionality with custom plugins
-- **Security First**: Role-based access control, reentrancy protection, and emergency stops
-- **Cross-Chain Ready**: Architecture designed for future cross-chain operations
-
-## Architecture
-
-### Core Components
-
-1. **Vault Factory**
-   - Deploys new vault instances
-   - Assigns unique vault IDs
-   - Manages vault metadata
-
-2. **Vault Core**
-   - Manages deposits and withdrawals
-   - Handles NFT storage and transfers
-   - Coordinates with other modules
-   - Implements plugin system
-
-3. **Share Token (ERC-20)**
-   - Represents ownership in the vault
-   - Supports voting and delegation
-   - Optional transfer restrictions
-
-4. **Governance Module**
-   - Proposal creation and voting
-   - On-chain and off-chain voting options
-   - Timelock for proposal execution
-
-### Additional Modules
-
-- **Acquisition Module**: NFT marketplace integration
-- **Liquidity Module**: NFT lending and borrowing
-- **Revenue Distribution**: Share NFT-generated income
-- **Plugin System**: Extend vault functionality
-
-## Getting Started
-
-### Prerequisites
-
-- Node.js v14+
-- npm or yarn
-- Hardhat
-
-### Installation
-
-1. Clone the repository:
-```bash
-git clone https://github.com/your-org/social-nft-vault.git
-cd social-nft-vault
-```
-
+1. Clone the repository
 2. Install dependencies:
 ```bash
 npm install
 ```
 
-3. Compile contracts:
+3. Create `.env` file with your configuration:
 ```bash
-npm run compile
+cp .env.example .env
 ```
 
-### Usage
+4. Update `.env` with your keys:
+- RPC URLs (Alchemy/Infura)
+- Private key for deployment
+- Etherscan API key
+- CoinMarketCap API key (optional)
 
-1. Deploy the Vault Factory:
-```javascript
-const VaultFactory = await ethers.getContractFactory("VaultFactory");
-const factory = await VaultFactory.deploy();
-await factory.deployed();
-```
+## Development
 
-2. Create a new vault:
-```javascript
-const tx = await factory.createVault(
-  "ipfs://your-metadata-uri",
-  ethers.utils.parseEther("1.0")
-);
-```
+```bash
+# Run tests
+npx hardhat test
 
-3. Initialize the vault:
-```javascript
-const vault = await ethers.getContractAt("VaultCore", vaultAddress);
-await vault.initialize(shareTokenAddress, governanceAddress);
+# Deploy to testnet
+npx hardhat run scripts/deploy.js --network holesky
 ```
 
 ## Security
 
-The protocol implements several security measures:
-
-- Reentrancy protection on all external functions
-- Role-based access control
-- Emergency pause functionality
-- Proposal timelock
-- Bond requirements for proposals
-
-## Development
-
-### Testing
-
-Run the test suite:
-```bash
-npm test
-```
-
-### Deployment
-
-Deploy to mainnet:
-```bash
-npm run deploy
-```
-
-## Contributing
-
-1. Fork the repository
-2. Create your feature branch
-3. Commit your changes
-4. Push to the branch
-5. Create a Pull Request
+- All sensitive data is stored in GitHub Secrets
+- Automated testing on every push
+- Continuous deployment to testnet
 
 ## License
 
-This project is licensed under the MIT License - see the LICENSE file for details.
-
-## Acknowledgments
-
-- OpenZeppelin for secure contract libraries
-- Compound for governance inspiration
-- Moloch DAO for ragequit mechanism 
+MIT 
